@@ -1,4 +1,6 @@
+import 'package:daily_meme/Screens/Home/home_screen.dart';
 import 'package:daily_meme/Screens/Login/components/background.dart';
+import 'package:daily_meme/Screens/MainNavi/main_navi.dart';
 import 'package:daily_meme/Screens/Signup/signup_screen.dart';
 import 'package:daily_meme/components/already_have_an_account_acheck.dart';
 import 'package:daily_meme/components/rounded_button.dart';
@@ -6,6 +8,8 @@ import 'package:daily_meme/components/rounded_input_field.dart';
 import 'package:daily_meme/components/rounded_password_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../main.dart';
 
 class Body extends StatelessWidget {
   const Body({
@@ -39,7 +43,13 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "LOGIN",
-              press: () {},
+              press: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return MainMenu();
+                }
+                )
+                );
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
@@ -60,3 +70,4 @@ class Body extends StatelessWidget {
     );
   }
 }
+
