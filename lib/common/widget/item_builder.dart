@@ -1,10 +1,11 @@
-import 'package:daily_meme/common/data/tu_chong_repository.dart';
+
 import 'package:daily_meme/common/data/tu_chong_source.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 
 import '../assets.dart';
+import '../data/tu_chong_repository.dart';
 
 Widget buildWaterfallFlowItem(BuildContext c, TuChongItem item, int index,
     {bool konwSized = true}) {
@@ -140,14 +141,14 @@ Widget buildBottomWidget(TuChongItem item, {bool showAvatar = true}) {
           shape: BoxShape.circle,
           //enableLoadState: false,
           border: Border.all(color: Colors.grey.withOpacity(0.4), width: 1.0),
-          loadStateChanged: (ExtendedImageState state) {
-            if (state.extendedImageLoadState == LoadState.completed) {
-              return null;
-            }
-            return Image.asset(
-              Assets.assets_avatar_jpg,
-            );
-          },
+          // loadStateChanged: (ExtendedImageState state) {
+          //   if (state.extendedImageLoadState == LoadState.completed) {
+          //     return null;
+          //   }
+          //   return Image.asset(
+          //     Assets.assets_avatar_jpg,
+          //   );
+          // },
         ),
       Expanded(
         child: Container(),
