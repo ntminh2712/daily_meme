@@ -39,13 +39,13 @@ class _MainMenuState extends State<MainMenu> {
       HomeList(),
       ArticleScreen(),
       ProfileScreen(
-        // menuScreenContext: widget.menuScreenContext,
-        // hideStatus: _hideNavBar,
-        // onScreenHideButtonPressed: () {
-        //   setState(() {
-        //     title = "Settings";
-        //   });
-        // },
+        menuScreenContext: widget.menuScreenContext,
+        hideStatus: _hideNavBar,
+        onScreenHideButtonPressed: () {
+          setState(() {
+            title = "Settings";
+          });
+        },
       )
     ];
   }
@@ -58,8 +58,8 @@ class _MainMenuState extends State<MainMenu> {
         ),
         icon: Icon(Icons.home),
         title: "Home",
-        activeColor: Colors.indigo,
-        inactiveColor: Colors.black45,
+        activeColorPrimary: Colors.indigo,
+        inactiveColorPrimary: Colors.black45,
       ),
       PersistentBottomNavBarItem(
         textStyle: TextStyle(
@@ -67,8 +67,8 @@ class _MainMenuState extends State<MainMenu> {
         ),
         icon: Icon(Icons.add),
         title: ("Article"),
-        activeColor: Colors.indigo,
-        inactiveColor: Colors.black45,
+        activeColorPrimary: Colors.indigo,
+        inactiveColorPrimary: Colors.black45,
       ),
       PersistentBottomNavBarItem(
         textStyle: TextStyle(
@@ -76,8 +76,8 @@ class _MainMenuState extends State<MainMenu> {
         ),
         icon: Icon(Icons.settings),
         title: ("Settings"),
-        activeColor: Colors.indigo,
-        inactiveColor: Colors.black45,
+        activeColorPrimary: Colors.indigo,
+        inactiveColorPrimary: Colors.black45,
       ),
     ];
   }
@@ -106,37 +106,8 @@ class _MainMenuState extends State<MainMenu> {
         hideNavigationBarWhenKeyboardShows: true,
         popActionScreens: PopActionScreensType.once,
         bottomScreenMargin: 0.0,
-        routeAndNavigatorSettings: RouteAndNavigatorSettings(
-          initialRoute: '/',
-          routes: {
-            '/home': (context) => HomeList(),
-            '/article': (context) => ArticleScreen(),
-            '/profile': (context) => ProfileScreen(),
-          },
-        ),
-        onWillPop: () async {
-          await showDialog(
-            context: context,
-            useSafeArea: true,
-            builder: (context) => Container(
-              height: 50.0,
-              width: 50.0,
-              color: Colors.white,
-              child: RaisedButton(
-                child: Text("Close"),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-          );
-          return false;
-        },
         selectedTabScreenContext: (context) {
           testContext = context;
-          setState(() {
-            title = context.hashCode.toString();
-          });
    },
         hideNavigationBar: _hideNavBar,
         decoration: NavBarDecoration(

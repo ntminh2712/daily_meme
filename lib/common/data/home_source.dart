@@ -34,8 +34,8 @@ T asT<T>(dynamic value) {
   return null;
 }
 
-class TuChongSource {
-  TuChongSource({
+class HomeSource {
+  HomeSource({
     this.counts,
     this.feedList,
     this.isHistory,
@@ -44,23 +44,23 @@ class TuChongSource {
     this.result,
   });
 
-  factory TuChongSource.fromJson(Map<String, dynamic> jsonRes) {
+  factory HomeSource.fromJson(Map<String, dynamic> jsonRes) {
     if (jsonRes == null) {
       return null;
     }
-    final List<TuChongItem> feedList =
-        jsonRes['feedList'] is List ? <TuChongItem>[] : null;
+    final List<HomeItem> feedList =
+        jsonRes['feedList'] is List ? <HomeItem>[] : null;
     if (feedList != null) {
       for (final dynamic item in jsonRes['feedList']) {
         if (item != null) {
           tryCatch(() {
-            feedList.add(TuChongItem.fromJson(asT<Map<String, dynamic>>(item)));
+            feedList.add(HomeItem.fromJson(asT<Map<String, dynamic>>(item)));
           });
         }
       }
     }
 
-    return TuChongSource(
+    return HomeSource(
       counts: asT<int>(jsonRes['counts']),
       feedList: feedList,
       isHistory: asT<bool>(jsonRes['is_history']),
@@ -71,7 +71,7 @@ class TuChongSource {
   }
 
   final int counts;
-  final List<TuChongItem> feedList;
+  final List<HomeItem> feedList;
   final bool isHistory;
   final String message;
   final bool more;
@@ -92,8 +92,8 @@ class TuChongSource {
   }
 }
 
-class TuChongItem {
-  TuChongItem({
+class HomeItem {
+  HomeItem({
     this.authorId,
     this.collected,
     this.commentListPrefix,
@@ -133,7 +133,7 @@ class TuChongItem {
     this.tagColors,
   });
 
-  factory TuChongItem.fromJson(Map<String, dynamic> jsonRes) {
+  factory HomeItem.fromJson(Map<String, dynamic> jsonRes) {
     if (jsonRes == null) {
       return null;
     }
@@ -225,7 +225,7 @@ class TuChongItem {
       }
     }
 
-    return TuChongItem(
+    return HomeItem(
       authorId: asT<String>(jsonRes['author_id']),
       collected: asT<bool>(jsonRes['collected']),
       commentListPrefix: commentListPrefix,

@@ -1,16 +1,20 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 
 
 class ProfileScreen extends StatelessWidget {
 
-  bool hideStatus;
-  BuildContext menuScreenContext;
-  void onScreenHideButtonPressed;
+  final bool hideStatus;
+  final BuildContext menuScreenContext;
+  final void onScreenHideButtonPressed;
+
+  const ProfileScreen({Key key, this.hideStatus, this.menuScreenContext, this.onScreenHideButtonPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
 
     return Scaffold(
         body: Column(
@@ -30,10 +34,6 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(0, 0,0 ,50),
               child: Stack(
                 children: <Widget>[
-                  CircleAvatar(
-                    radius: 70,
-                    child: ClipOval(child: Image.asset('images/girl.jpg', height: 150, width: 150, fit: BoxFit.cover,),),
-                  ),
                   Positioned(bottom: 1, right: 1 ,child: Container(
                     height: 40, width: 40,
                     child: Icon(Icons.add_a_photo, color: Colors.white,),

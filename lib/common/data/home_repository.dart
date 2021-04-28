@@ -5,10 +5,9 @@ import 'package:http/http.dart';
 import 'package:http_client_helper/http_client_helper.dart';
 import 'package:loading_more_list_library/loading_more_list_library.dart';
 
-import 'mock_data.dart';
-import 'tu_chong_source.dart';
+import 'home_source.dart';
 
-Future<bool> onLikeButtonTap(bool isLiked, TuChongItem item) {
+Future<bool> onLikeButtonTap(bool isLiked, HomeItem item) {
   ///send your request here
   return Future<bool>.delayed(const Duration(milliseconds: 50), () {
     item.isFavorite = !item.isFavorite;
@@ -17,8 +16,8 @@ Future<bool> onLikeButtonTap(bool isLiked, TuChongItem item) {
   });
 }
 
-class TuChongRepository extends LoadingMoreBase<TuChongItem> {
-  TuChongRepository({this.maxLength = 300});
+class HomeRepository extends LoadingMoreBase<HomeItem> {
+  HomeRepository({this.maxLength = 300});
   int _pageIndex = 1;
   bool _hasMore = true;
   bool forceRefresh = false;
@@ -52,21 +51,19 @@ class TuChongRepository extends LoadingMoreBase<TuChongItem> {
     try {
       //to show loading more clearly, in your app,remove this
       //await Future.delayed(const Duration(milliseconds: 500));
-      List<TuChongItem> feedList;
+      List<HomeItem> feedList;
       if (!kIsWeb) {
-        final Response result = await HttpClientHelper.get(url);
-        feedList = TuChongSource.fromJson(
+        final Response result = await HttpClientHelper.get(Uri.parse(url));
+        feedList = HomeSource.fromJson(
                 json.decode(result.body) as Map<String, dynamic>)
             .feedList;
-      } else {
-        feedList = mockSource.feedList.getRange(length, length + 20).toList();
       }
 
       if (_pageIndex == 1) {
         clear();
       }
 
-      for (final TuChongItem item in feedList) {
+      for (final HomeItem item in feedList) {
         if (item.hasImage && !contains(item) && hasMore) {
           add(item);
         }
