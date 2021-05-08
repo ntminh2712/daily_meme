@@ -4,7 +4,7 @@
 // **************************************************************************
 class Assets {
   const Assets._();
-  static const String assets_avatar_jpg = 'assets/avatar.jpg';
+  // static const String assets_avatar_jpg = 'assets/avatar.jpg';
 
   static const String assets_fluttercandies_grey_png =
       'assets/flutterCandies_grey.png';

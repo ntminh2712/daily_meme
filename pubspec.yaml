@@ -28,7 +28,9 @@ dependencies:
 
   waterfall_flow: any
   persistent_bottom_nav_bar: any
-
+  image_picker: ^0.6.1+4
+  video_player: ^0.10.2+1
+  flutter_tags: "^0.4.8+1"
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0

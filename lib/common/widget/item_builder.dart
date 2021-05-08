@@ -158,7 +158,7 @@ Widget buildBottomWidget(HomeItem item, {bool showAvatar = true}) {
               return null;
             }
             return Image.asset(
-              Assets.assets_avatar_jpg,
+              "assets/images/default-avatar.jpg"
             );
           },
         ),

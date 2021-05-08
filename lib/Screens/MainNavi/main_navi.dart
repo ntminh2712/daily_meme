@@ -1,6 +1,7 @@
 import 'package:daily_meme/Screens/Article/article_screen.dart';
 import 'package:daily_meme/Screens/Home/home_screen.dart';
 import 'package:daily_meme/Screens/Profile/ProfileScreen.dart';
+import 'package:daily_meme/Screens/Search/search_screen.dart';
 import 'package:daily_meme/Screens/WelCome/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,7 @@ class _MainMenuState extends State<MainMenu> {
   List<Widget> _buildScreens() {
     return [
       HomeList(),
+      SearchScreen(),
       ArticleScreen(),
       ProfileScreen(
         menuScreenContext: widget.menuScreenContext,
@@ -58,6 +60,15 @@ class _MainMenuState extends State<MainMenu> {
         ),
         icon: Icon(Icons.home),
         title: "Home",
+        activeColorPrimary: Colors.indigo,
+        inactiveColorPrimary: Colors.black45,
+      ),
+      PersistentBottomNavBarItem(
+        textStyle: TextStyle(
+          fontSize: 13,
+        ),
+        icon: Icon(Icons.search),
+        title: ("Search"),
         activeColorPrimary: Colors.indigo,
         inactiveColorPrimary: Colors.black45,
       ),
